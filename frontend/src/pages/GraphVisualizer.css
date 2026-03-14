@@ -1,0 +1,165 @@
+.graph-controls-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mode-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.mode-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #999;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.mode-btn.active {
+    background: #ef4444;
+    border-color: #ef4444;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.algo-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.graph-display-container {
+    position: relative;
+    background: #050505;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 600px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.status-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #ef4444;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    z-index: 5;
+}
+
+.graph-canvas {
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+.graph-node-group {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.graph-node-group:hover .graph-node-circle {
+    fill: #222;
+}
+
+.graph-node-circle {
+    fill: #111;
+    stroke: #ef4444;
+    stroke-width: 2.5;
+    transition: all 0.3s ease;
+}
+
+.graph-node-label {
+    fill: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.graph-node-group.visited .graph-node-circle {
+    fill: #ef4444;
+    stroke: #fff;
+    transform-origin: center;
+    animation: nodePulse 0.5s ease;
+}
+
+.graph-node-group.selected .graph-node-circle {
+    stroke: #3b82f6;
+    stroke-dasharray: 5;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes nodePulse {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.graph-edge {
+    stroke: #333;
+    stroke-width: 2;
+    transition: all 0.5s ease;
+}
+
+.graph-edge.visited {
+    stroke: #ef4444;
+    stroke-width: 4;
+}
+
+/* Light Theme Overrides */
+.light-theme .graph-controls-panel {
+    background: #fff;
+    border-color: #cbd5e1;
+}
+
+.light-theme .mode-btn {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #64748b;
+}
+
+.light-theme .mode-btn:hover {
+    background: #f1f5f9;
+}
+
+.light-theme .graph-display-container {
+    background: #fff;
+    border-color: #cbd5e1;
+}
+
+.light-theme .graph-node-circle {
+    fill: #f8fafc;
+    stroke: #ef4444;
+}
+
+.light-theme .graph-edge {
+    stroke: #cbd5e1;
+}
+
+.light-theme .graph-node-label {
+    fill: #0f172a;
+}

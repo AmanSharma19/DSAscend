@@ -1,0 +1,266 @@
+.ds-dashboard {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.panel {
+    background: #111111;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.ds-controls {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ds-controls h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 12px;
+}
+
+.ds-mode-selector {
+    display: flex;
+    gap: 12px;
+}
+.ds-mode-selector button {
+    flex: 1;
+}
+
+.ds-input-group {
+    display: flex;
+    gap: 12px;
+}
+.ds-input-group input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #444444;
+    background: #000000;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.ds-input-group input:focus {
+    border-color: #ef4444;
+}
+
+.ds-action-group {
+    display: flex;
+    gap: 12px;
+}
+.ds-action-group button {
+    flex: 1;
+}
+
+.ds-visualization {
+    flex: 2;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ds-message-box {
+    background: #000000;
+    border: 1px solid #444444;
+    border-left: 4px solid #ef4444; /* High constrast red line */
+    padding: 16px;
+    border-radius: 8px;
+    color: #e5e5e5;
+    font-weight: 600;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+}
+.pulsing {
+    animation: flashBorder 0.5s ease-out;
+}
+@keyframes flashBorder {
+    0% { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+    100% { border-color: #444444; background: #000000; }
+}
+
+.ds-container-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    min-height: 400px;
+    padding: 40px;
+    overflow: hidden;
+}
+
+.ds-container {
+    display: flex;
+    gap: 12px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Stack styling (Vertical box layout) */
+.ds-container.stack {
+    flex-direction: column;
+    border-left: 4px solid #444444;
+    border-right: 4px solid #444444;
+    border-bottom: 4px solid #444444;
+    border-radius: 0 0 16px 16px;
+    padding: 20px;
+    width: 300px;
+    justify-content: flex-end; /* Grows from bottom */
+}
+
+/* Queue styling (Horizontal pipe layout) */
+.ds-container.queue {
+    flex-direction: row;
+    border-top: 4px solid #444444;
+    border-bottom: 4px solid #444444;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    justify-content: flex-start; /* Grows from left */
+    overflow-x: auto;
+}
+
+.ds-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #555555;
+    gap: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ds-item {
+    background: #222222;
+    border: 2px solid #ef4444; /* High contrast red border */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.ds-container.stack .ds-item {
+    width: 100%;
+    min-height: 60px;
+}
+
+.ds-container.queue .ds-item {
+    min-width: 100px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.ds-index {
+    font-size: 0.7rem;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: -20px; /* Standardize label on top */
+}
+
+/* Stack label goes left because of vertical stacking */
+.ds-container.stack .ds-index {
+    left: -60px;
+    top: auto;
+}
+
+.ds-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    word-break: break-all;
+}
+
+/* Animations */
+.anim-add-stack {
+    animation: dropIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.anim-remove-stack {
+    animation: flyOutUp 0.3s ease-in forwards;
+}
+.anim-add-queue {
+    animation: slideInRight 0.4s ease-out forwards;
+}
+.anim-remove-queue {
+    animation: slideOutLeft 0.3s ease-in forwards;
+}
+
+@keyframes dropIn {
+    0% { transform: translateY(-50px); opacity: 0; background: #ffffff; color: #000000; }
+    100% { transform: translateY(0); opacity: 1; background: #222222; color: #ffffff; }
+}
+
+@keyframes flyOutUp {
+    0% { transform: translateY(0); opacity: 1; background: #ef4444; border-color: #ffffff; }
+    100% { transform: translateY(-50px); opacity: 0; }
+}
+
+@keyframes slideInRight {
+    0% { transform: translateX(50px); opacity: 0; background: #ffffff; color: #000000; }
+    100% { transform: translateX(0); opacity: 1; background: #222222; color: #ffffff; }
+}
+
+@keyframes slideOutLeft {
+    0% { transform: translateX(0); opacity: 1; background: #ef4444; border-color: #ffffff; }
+    100% { transform: translateX(-50px); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .ds-dashboard {
+        flex-direction: column;
+    }
+    .ds-controls, .ds-visualization {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    
+    .ds-controls {
+        order: 1; /* Move controls down if needed or keep structure, let's keep visualizer first or as it is */
+    }
+    
+    .ds-container-wrapper {
+        padding: 20px;
+        min-height: 300px;
+    }
+    
+    .ds-action-group {
+        flex-wrap: wrap;
+    }
+    .ds-action-group button {
+        flex-basis: 45%; 
+    }
+}

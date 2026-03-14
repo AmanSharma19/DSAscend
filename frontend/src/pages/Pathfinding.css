@@ -1,0 +1,181 @@
+.pathfinding-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #111111; /* Off-black */
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: 1px solid #333333;
+}
+
+.legend {
+    display: flex;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.legend-node {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #444444;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000000;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #222222;
+}
+
+.grid {
+    display: inline-flex;
+    flex-direction: column;
+    border: 1px solid #333333;
+    background: #000000;
+}
+
+.grid-row {
+    display: flex;
+    height: 25px;
+}
+
+.node {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #1a1a1a; /* Very faint line grid */
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.2s, border 0.2s, transform 0.1s;
+}
+
+.node:hover {
+    background-color: #222222;
+}
+
+.node-start {
+    background-color: #ffffff; /* White start */
+    border-color: #cccccc;
+    z-index: 2;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M8 5v14l11-7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.node-finish {
+    background-color: #ef4444; /* Red finish */
+    border-color: #dc2626;
+    z-index: 2;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.node-wall {
+    background-color: #333333; /* Dark gray wall */
+    border-color: #444444;
+    animation: wallAnimation 0.3s ease-out;
+}
+
+.node-visited {
+    animation: visitedAnimation 1.5s ease-out forwards;
+}
+
+.node-shortest-path {
+    animation: shortestPathAnimation 1.5s ease-out forwards;
+}
+
+.grid-instructions {
+    margin-top: 16px;
+    color: #666666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Animations in Red / Black / White */
+@keyframes wallAnimation {
+    0% { transform: scale(0.3); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes visitedAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: rgba(255, 0, 0, 0.8); /* Red burst */
+        border-radius: 100%;
+    }
+    50% {
+        background-color: rgba(153, 27, 27, 0.8); /* Dark red wave */
+    }
+    75% {
+        transform: scale(1.2);
+        background-color: rgba(68, 68, 68, 0.8); /* Grayscale settling */
+    }
+    100% {
+        transform: scale(1);
+        background-color: #222222; /* Settle on dark gray for visited */
+        border-color: #333333;
+    }
+}
+
+@keyframes shortestPathAnimation {
+    0% {
+        transform: scale(0.6);
+        background-color: #ffffff; /* White burst for path */
+    }
+    50% {
+        transform: scale(1.2);
+        background-color: #ef4444; /* Swap to red */
+    }
+    100% {
+        transform: scale(1);
+        background-color: #ffffff; /* Stay white for final path */
+        border-color: #ef4444; /* Red border holding the white */
+    }
+}
+
+@media (max-width: 768px) {
+    .pathfinding-controls {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+    
+    .legend {
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 12px;
+    }
+    
+    .action-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .grid-container {
+        padding: 12px;
+        overflow-x: auto;
+        /* Allow horizontal scrolling for grid on small screens */
+        align-items: flex-start;
+    }
+}

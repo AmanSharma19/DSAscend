@@ -1,0 +1,238 @@
+.controls-container {
+    background: #111111; /* Off-black */
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #333333;
+}
+
+.controls-top, .controls-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.controls-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controls-group label {
+    font-size: 0.85rem;
+    color: #999999;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.custom-input-group {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.text-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #444444;
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.text-input:focus {
+    border-color: #ef4444; /* Red focus */
+}
+
+.settings-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.player-group {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.playback-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: #222222;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.btn.icon-btn {
+    padding: 8px;
+}
+
+.btn.icon-btn.large {
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.btn:hover:not(:disabled) {
+    background: #333333;
+}
+
+.btn.active {
+    background: #ef4444; /* Primary Red Action */
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); /* Glow red */
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn.primary {
+    background: #ffffff;
+    color: #000000; /* Distinct white primary button */
+}
+
+.btn.primary:hover:not(:disabled) {
+    background: #eeeeee;
+}
+
+.btn.success {
+    background: #ef4444; /* Swap to Red */
+    color: #ffffff;
+}
+
+.btn.success:hover:not(:disabled) {
+    background: #dc2626; 
+}
+
+.btn.danger {
+    background: #b91c1c; /* Deep Red */
+    color: white;
+}
+
+.btn.danger:hover:not(:disabled) {
+    background: #991b1b;
+}
+
+.btn.info {
+    background: #ffffff; /* Contrast button for tools like randomize */
+    color: #000000;
+}
+
+.btn.info:hover:not(:disabled) {
+    background: #e5e5e5;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.slider-container label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #333333;
+    border-radius: 4px;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ffffff; /* White handle */
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border: 2px solid #ef4444; /* Red accent border */
+}
+
+.slider:disabled::-webkit-slider-thumb {
+    background: #666666;
+    border-color: #444444;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #222222;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #ef4444; /* Bright Red Progress */
+    transition: width 0.2s ease;
+}
+
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -16px;
+    font-size: 0.7rem;
+    color: #ffffff;
+    pointer-events: none;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .controls-top, .controls-bottom {
+        flex-direction: column;
+    }
+    
+    .player-group {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+}

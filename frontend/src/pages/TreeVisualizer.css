@@ -1,0 +1,79 @@
+.tree-dashboard {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.svg-container {
+    width: 100%;
+    height: 500px;
+    background: rgba(20, 20, 20, 0.4);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tree-node {
+    fill: rgba(30, 41, 59, 0.9);
+    stroke: #3b82f6;
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.tree-node.highlighted {
+    fill: #3b82f6;
+    stroke: #60a5fa;
+    filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.8));
+    transform: scale(1.1);
+}
+
+.tree-edge {
+    stroke: rgba(148, 163, 184, 0.3);
+    stroke-width: 2;
+}
+
+.tree-text {
+    fill: #f8fafc;
+    font-size: 14px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.empty-tree {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #64748b;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action-grid .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.action-grid .btn.danger {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .tree-dashboard {
+        grid-template-columns: 1fr; /* Stack columns on small screens */
+    }
+    
+    .svg-container {
+        height: 350px;
+    }
+}
