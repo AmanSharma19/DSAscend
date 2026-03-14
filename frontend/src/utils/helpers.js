@@ -1,3 +1,5 @@
+import API_BASE_URL from '../config';
+
 export const generateRandomArray = (length, min, max) => {
   return Array.from({ length }, () => Math.floor(Math.random() * (max - min + 1) + min));
 };
@@ -9,7 +11,7 @@ export const saveToHistory = async (title, type, algo, data, language = 'javascr
   if (!token) return;
 
   try {
-    const response = await fetch('http://localhost:5000/api/visualizations/save', {
+    const response = await fetch(`${API_BASE_URL}/api/visualizations/save`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',

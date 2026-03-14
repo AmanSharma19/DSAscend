@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AuthModal.css';
+import API_BASE_URL from '../config';
 import { X, Lock, Mail, User } from 'lucide-react';
 
 const AuthModal = ({ isOpen, onClose, onLogin, initialType }) => {
@@ -57,7 +58,7 @@ const AuthModal = ({ isOpen, onClose, onLogin, initialType }) => {
             const payload = isLogin ? { email, password } : { username: name, email, password };
             
             // Note: In production you'd use an environment variable for the base URL
-            const response = await fetch(`http://localhost:5000${endpoint}`, {
+            const response = await fetch(`${API_BASE_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

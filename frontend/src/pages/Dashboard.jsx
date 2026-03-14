@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Clock, Trash2, Database, ChevronRight, Layout, Code2, GitBranch, BarChart2, Share2 } from 'lucide-react';
+import API_BASE_URL from '../config';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -20,7 +21,7 @@ const Dashboard = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/visualizations/history', {
+            const response = await fetch(`${API_BASE_URL}/api/visualizations/history`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -38,7 +39,7 @@ const Dashboard = () => {
         e.stopPropagation();
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch(`http://localhost:5000/api/visualizations/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/api/visualizations/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

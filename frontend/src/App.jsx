@@ -13,6 +13,7 @@ import AuthModal from './components/AuthModal';
 import Dashboard from './pages/Dashboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import API_BASE_URL from './config';
 import './App.css';
 
 function AppContent() {
@@ -38,7 +39,7 @@ function AppContent() {
             if (!token) return;
 
             try {
-                const response = await fetch('http://localhost:5000/api/auth/profile', {
+                const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const data = await response.json();

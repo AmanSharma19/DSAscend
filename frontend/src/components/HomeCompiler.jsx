@@ -4,6 +4,7 @@ import { Code2, Play, Zap, TerminalSquare, ExternalLink, AlertCircle } from 'luc
 import { SORTING_ALGORITHMS } from '../algorithms/sortingAlgorithms';
 import { generateRandomArray, delay } from '../utils/helpers';
 import Visualizer from './Visualizer';
+import API_BASE_URL from '../config';
 import './HomeCompiler.css';
 
 const HomeCompiler = () => {
@@ -178,7 +179,7 @@ const HomeCompiler = () => {
         if (!token) return;
 
         try {
-            await fetch('http://localhost:5000/api/visualizations/save', {
+            await fetch(`${API_BASE_URL}/api/visualizations/save`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
